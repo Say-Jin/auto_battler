@@ -36,19 +36,19 @@ def random_rpg():
 
     possibilities = ["Yes", "No"]
 
-    response = random.choice(possibilities)
-    ##response = input("Yes or No: "
+    ##response = random.choice(possibilities)
+   
 
 
     print("Greetings, would you like to roll the die?")
-    print(response)
-
-    if response == "Yes":
+    response = input("Yes or No: ")
+    if response == "Yes" or response == "yes":
         print("The die shows: " + str(dice_roll))
 
         if dice_roll <= 3:
                 print("And it's a miss.")
                 print("No damage feller.")
+                input("Would you like to roll again? Get me out or continue: ")
         elif dice_roll <= 7:
                 print("It's a hit.")
                 print("You did " + str(hit_point_value) + " damage " + "to a " + 
@@ -60,8 +60,10 @@ def random_rpg():
         else:
                 print("Error")
     else:
-            response == "No"
-            print("No die, ight cool.")
-            print("Are you sure? ")
-            return(random_rpg)
+        print("No die, ight cool.")
+        updated_response = input("Are you sure? Get me out or continue? ")
+        if updated_response == "continue" or updated_response == "Continue":
+                return random_rpg()
+        else:
+                return None
 random_rpg()
